@@ -31,7 +31,7 @@ if (headerTarget) {
         <div class="header-actions">
           <button class="icon-button" type="button" data-search-open aria-label="Поиск по сайту" title="Поиск"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg></button>
           <button class="icon-button" type="button" data-accessibility-button aria-expanded="false" aria-controls="accessibility-panel" aria-label="Версия для слабовидящих" title="Версия для слабовидящих">А</button>
-          <button class="icon-button menu-button" type="button" data-menu-button aria-expanded="false" aria-label="Открыть меню">☰</button>
+          <button class="icon-button menu-button" type="button" data-menu-button aria-expanded="false" aria-label="Открыть меню"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
         </div>
       </div>
       <div class="accessibility-panel" id="accessibility-panel" data-accessibility-panel hidden>
@@ -49,7 +49,7 @@ if (headerTarget) {
     <dialog class="search-dialog" data-search-dialog>
       <div class="search-dialog__header">
         <h2>Поиск по сайту</h2>
-        <button class="icon-button" type="button" data-search-close aria-label="Закрыть поиск">×</button>
+        <button class="icon-button" type="button" data-search-close aria-label="Закрыть поиск"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>
       </div>
       <div class="search-dialog__body">
         <label class="eyebrow" for="site-search">Что вы хотите найти?</label>
