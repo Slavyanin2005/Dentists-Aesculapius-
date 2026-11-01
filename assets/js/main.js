@@ -104,16 +104,14 @@ document.querySelectorAll('[data-filter]').forEach((button) => button.addEventLi
 const documentDialog = document.querySelector('[data-document-dialog]');
 const documentDialogImage = document.querySelector('[data-document-dialog-image]');
 const documentDialogTitle = document.querySelector('[data-document-dialog-title]');
-const documentDialogLink = document.querySelector('[data-document-dialog-link]');
 
 document.querySelectorAll('[data-document]').forEach((button) => button.addEventListener('click', () => {
-  if (!documentDialog || !documentDialogImage || !documentDialogTitle || !documentDialogLink) return;
+  if (!documentDialog || !documentDialogImage || !documentDialogTitle) return;
   const source = button.dataset.document;
   const title = button.dataset.documentTitle || 'Документ';
   documentDialogImage.src = source;
   documentDialogImage.alt = title;
   documentDialogTitle.textContent = title;
-  documentDialogLink.href = source;
   documentDialog.showModal();
 }));
 
