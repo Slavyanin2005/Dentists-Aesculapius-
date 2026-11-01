@@ -4,7 +4,7 @@ const PHONE_LINK = 'tel:+79131631078';
 const searchIndex = [
   { title: 'Главная', url: 'index.html', text: 'стоматологическая клиника Эскулап Норильск Талнах Рудная 47 запись телефон режим работы' },
   { title: 'Услуги и цены', url: 'services.html', text: 'прайс консультация лечение терапия удаление протезирование коронки гигиена анестезия стоимость' },
-  { title: 'Наши врачи', url: 'doctors.html', text: 'Гречко Светлана Васильевна врач стоматолог Гречко Сергей Алексеевич зубной врач руководитель' },
+  { title: 'Наши врачи', url: 'doctors.html', text: 'Гречко Светлана Васильевна врач стоматолог Гречко Сергей Алексеевич зубной врач образование квалификация аккредитация документы' },
   { title: 'Пациентам', url: 'patients.html', text: 'правила записи подготовка права обязанности ОМС ДМС государственные гарантии' },
   { title: 'Документы', url: 'documents.html', text: 'лицензия Л041-01019-24/00323079 ИНН ОГРН контролирующие органы Росздравнадзор Роспотребнадзор' },
   { title: 'Контакты', url: 'contacts.html', text: 'адрес Рудная 47 Талнах Норильск телефон email карта проезд режим работы' },
@@ -100,6 +100,30 @@ document.querySelectorAll('[data-filter]').forEach((button) => button.addEventLi
     section.hidden = filter !== 'all' && section.dataset.serviceCategory !== filter;
   });
 }));
+
+const documentDialog = document.querySelector('[data-document-dialog]');
+const documentDialogImage = document.querySelector('[data-document-dialog-image]');
+const documentDialogTitle = document.querySelector('[data-document-dialog-title]');
+const documentDialogLink = document.querySelector('[data-document-dialog-link]');
+
+document.querySelectorAll('[data-document]').forEach((button) => button.addEventListener('click', () => {
+  if (!documentDialog || !documentDialogImage || !documentDialogTitle || !documentDialogLink) return;
+  const source = button.dataset.document;
+  const title = button.dataset.documentTitle || 'Документ';
+  documentDialogImage.src = source;
+  documentDialogImage.alt = title;
+  documentDialogTitle.textContent = title;
+  documentDialogLink.href = source;
+  documentDialog.showModal();
+}));
+
+document.querySelector('[data-document-dialog-close]')?.addEventListener('click', () => documentDialog?.close());
+documentDialog?.addEventListener('click', (event) => {
+  if (event.target === documentDialog) documentDialog.close();
+});
+documentDialog?.addEventListener('close', () => {
+  if (documentDialogImage) documentDialogImage.src = '';
+});
 
 document.querySelectorAll('[data-year]').forEach((item) => { item.textContent = new Date().getFullYear(); });
 
