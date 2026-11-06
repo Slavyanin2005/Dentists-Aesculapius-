@@ -1,5 +1,7 @@
 const headerTarget = document.querySelector('[data-site-header]');
 const footerTarget = document.querySelector('[data-site-footer]');
+const shellSiteRoot = new URL('../../', document.currentScript.src);
+const shellUrl = (path = '') => new URL(path, shellSiteRoot).href;
 
 if (headerTarget) {
   headerTarget.innerHTML = `
@@ -15,17 +17,17 @@ if (headerTarget) {
     </div>
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="index.html" aria-label="Эскулап — на главную">
-          <img src="media/eskulap-logo-horizontal.svg" width="780" height="197" alt="Эскулап, стоматология">
+        <a class="brand" href="${shellUrl()}" aria-label="Эскулап – на главную">
+          <img src="${shellUrl('media/eskulap-logo-horizontal.svg')}" width="780" height="197" alt="Эскулап, стоматология">
         </a>
         <nav class="main-nav" data-menu aria-label="Основная навигация">
           <ul>
-            <li><a data-nav-link href="index.html">Главная</a></li>
-            <li><a data-nav-link href="services.html">Услуги и цены</a></li>
-            <li><a data-nav-link href="doctors.html">Врачи</a></li>
-            <li><a data-nav-link href="patients.html">Пациентам</a></li>
-            <li><a data-nav-link href="documents.html">Документы</a></li>
-            <li><a data-nav-link href="contacts.html">Контакты</a></li>
+            <li><a data-nav-link href="${shellUrl()}">Главная</a></li>
+            <li><a data-nav-link href="${shellUrl('services/')}">Услуги и цены</a></li>
+            <li><a data-nav-link href="${shellUrl('doctors/')}">Врачи</a></li>
+            <li><a data-nav-link href="${shellUrl('patients/')}">Пациентам</a></li>
+            <li><a data-nav-link href="${shellUrl('documents/')}">Документы</a></li>
+            <li><a data-nav-link href="${shellUrl('contacts/')}">Контакты</a></li>
           </ul>
         </nav>
         <div class="header-actions">
@@ -63,7 +65,7 @@ if (footerTarget) {
   footerTarget.innerHTML = `
     <section class="cta-band" aria-label="Запись по телефону">
       <div class="container cta-band__inner">
-        <div><h2>Запись на приём — по телефону</h2><p>Позвоните, чтобы уточнить удобное время и подготовку к визиту.</p></div>
+        <div><h2>Запись на приём – по телефону</h2><p>Позвоните, чтобы уточнить удобное время и подготовку к визиту.</p></div>
         <a class="button button--primary" data-phone href="tel:+79131631078">Позвонить +7 (913) 163-10-78</a>
       </div>
     </section>
@@ -71,17 +73,17 @@ if (footerTarget) {
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <img src="media/eskulap-logo-horizontal.svg" width="780" height="197" alt="Эскулап, стоматология">
-            <p>ООО «ЭСКУЛАП». Стоматологическая помощь детям и взрослым. Приём ведётся по предварительной записи.</p>
+            <img src="${shellUrl('media/eskulap-logo-horizontal.svg')}" width="780" height="197" alt="Эскулап, стоматология">
+            <p>ООО «ЭСКУЛАП». Стоматологическая помощь пациентам. Приём ведётся по предварительной записи.</p>
           </div>
           <div>
             <h3>Разделы</h3>
             <ul class="footer-links">
-              <li><a href="services.html">Услуги и цены</a></li>
-              <li><a href="doctors.html">Врачи</a></li>
-              <li><a href="patients.html">Пациентам</a></li>
-              <li><a href="documents.html">Документы</a></li>
-              <li><a href="sitemap.html">Навигация</a></li>
+              <li><a href="${shellUrl('services/')}">Услуги и цены</a></li>
+              <li><a href="${shellUrl('doctors/')}">Врачи</a></li>
+              <li><a href="${shellUrl('patients/')}">Пациентам</a></li>
+              <li><a href="${shellUrl('documents/')}">Документы</a></li>
+              <li><a href="${shellUrl('navigation/')}">Навигация</a></li>
             </ul>
           </div>
           <div>
@@ -93,7 +95,7 @@ if (footerTarget) {
         <div class="legal-warning">Имеются противопоказания. Необходима консультация специалиста.</div>
         <div class="footer-bottom">
           <span>© <span data-year></span> ООО «ЭСКУЛАП»</span>
-          <span><a href="privacy.html">Политика обработки персональных данных</a></span>
+          <span><a href="${shellUrl('privacy/')}">Политика обработки персональных данных</a></span>
         </div>
       </div>
     </footer>
