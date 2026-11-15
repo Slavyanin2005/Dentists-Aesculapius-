@@ -51,8 +51,7 @@ html[data-contrast="high"] {
   --shadow: none;
 }
 html[data-contrast="high"] body { background: #fff; }
-html[data-contrast="high"] .button--primary,
-html[data-contrast="high"] .mobile-call { border: 2px solid #000; }
+html[data-contrast="high"] .button--primary { border: 2px solid #000; }
 
 .container { width: min(calc(100% - 40px - env(safe-area-inset-left) - env(safe-area-inset-right)), var(--content)); margin-inline: auto; }
 .narrow { width: min(calc(100% - 40px - env(safe-area-inset-left) - env(safe-area-inset-right)), 820px); margin-inline: auto; }
@@ -134,9 +133,8 @@ p { margin-top: 0; }
 
 .doctor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .doctor-card { overflow: hidden; display: grid; grid-template-columns: 210px 1fr; border: 1px solid var(--line); border-radius: var(--radius-xl); background: #fff; }
-.doctor-placeholder { min-height: 310px; position: relative; display: grid; place-items: center; overflow: hidden; background: linear-gradient(160deg, var(--navy), var(--teal)); color: #fff; }
-.doctor-placeholder::after { content: ""; position: absolute; width: 160px; height: 160px; border: 30px solid rgba(255,255,255,.09); border-radius: 50%; right: -60px; bottom: -60px; }
-.doctor-placeholder svg { width: 90px; opacity: .95; }
+.doctor-placeholder { min-height: 310px; position: relative; display: grid; place-items: center; overflow: hidden; background: #fff; color: #fff; }
+.doctor-placeholder img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 18%; }
 .doctor-card__body { padding: 30px; }
 .doctor-card__role { color: var(--teal-dark); font-weight: 800; }
 .doctor-card__meta { margin: 20px 0 0; padding: 0; list-style: none; color: var(--muted); }
@@ -148,8 +146,8 @@ p { margin-top: 0; }
 .doctor-profile { scroll-margin-top: 125px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-xl); background: #fff; box-shadow: 0 14px 45px rgba(7,71,137,.07); }
 .doctor-profile__header { display: grid; grid-template-columns: 230px 1fr; gap: 38px; align-items: center; padding: 36px; background: linear-gradient(140deg, #f7fbfc, #eaf6f7); }
 .doctor-profile__header h2 { margin-bottom: 14px; }
-.doctor-profile__portrait { min-height: 250px; display: grid; place-items: center; overflow: hidden; border-radius: 26px; background: linear-gradient(150deg, var(--navy), var(--teal)); color: #fff; }
-.doctor-profile__portrait svg { width: 104px; opacity: .95; }
+.doctor-profile__portrait { min-height: 250px; position: relative; display: grid; place-items: center; overflow: hidden; border-radius: 26px; background: #fff; color: #fff; }
+.doctor-profile__portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 18%; }
 .doctor-profile__intro { max-width: 660px; margin-bottom: 22px; color: var(--muted); font-size: 1.08rem; }
 .doctor-profile__facts { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .doctor-fact { padding: 30px 36px; }
@@ -257,14 +255,13 @@ p { margin-top: 0; }
 .footer-links li { margin: 8px 0; }
 .legal-warning { margin-top: 38px; padding: 18px 0; border-top: 1px solid rgba(255,255,255,.16); border-bottom: 1px solid rgba(255,255,255,.16); color: #fff; font-weight: 800; text-align: center; text-transform: uppercase; letter-spacing: .03em; }
 .footer-bottom { display: flex; justify-content: space-between; gap: 30px; padding-top: 24px; font-size: .84rem; }
-.mobile-call { display: none; }
-
 .search-dialog { width: min(720px, calc(100% - 30px)); max-height: 82vh; max-height: 82dvh; overflow-y: auto; overscroll-behavior: contain; padding: 0; border: 0; border-radius: 24px; box-shadow: 0 30px 100px rgba(0,0,0,.3); }
 .search-dialog::backdrop { background: rgba(3,24,42,.68); backdrop-filter: blur(5px); }
 .search-dialog__header { display: flex; align-items: center; justify-content: space-between; padding: 22px 24px; border-bottom: 1px solid var(--line); }
 .search-dialog__header h2 { margin: 0; font-size: 1.45rem; }
 .search-dialog__body { padding: 22px 24px 28px; }
 .search-input { width: 100%; border: 2px solid var(--navy); border-radius: 14px; padding: 14px 16px; }
+.search-input:focus-visible { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(7,71,137,.18); }
 .search-results { margin: 18px 0 0; padding: 0; list-style: none; }
 .search-results li { border-bottom: 1px solid var(--line); }
 .search-results a { display: block; padding: 14px 2px; text-decoration: none; }
@@ -325,9 +322,9 @@ p { margin-top: 0; }
   .floating-card--hours { bottom: 8px; }
   .card-grid { grid-template-columns: 1fr; }
   .doctor-card { grid-template-columns: 1fr; }
-  .doctor-placeholder { min-height: 230px; }
+  .doctor-placeholder { min-height: 0; aspect-ratio: 4 / 3; }
   .doctor-profile__header { grid-template-columns: 1fr; padding: 22px; }
-  .doctor-profile__portrait { min-height: 210px; }
+  .doctor-profile__portrait { min-height: 0; aspect-ratio: 4 / 3; }
   .doctor-profile__header .button { width: 100%; }
   .doctor-profile__facts { grid-template-columns: 1fr; }
   .doctor-fact, .doctor-fact:nth-child(odd), .doctor-fact:nth-child(-n+2) { padding: 23px 22px; border-right: 0; border-bottom: 1px solid var(--line); }
@@ -348,8 +345,6 @@ p { margin-top: 0; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-brand { grid-column: auto; }
   .footer-bottom { flex-direction: column; }
-  .mobile-call { position: fixed; z-index: 90; left: calc(12px + env(safe-area-inset-left)); right: calc(12px + env(safe-area-inset-right)); bottom: calc(12px + env(safe-area-inset-bottom)); min-height: 56px; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 999px; background: var(--teal); color: #fff; box-shadow: 0 14px 45px rgba(0,40,50,.35); font-weight: 850; text-decoration: none; }
-  .site-footer { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
   .page-hero { padding: 52px 0 46px; }
   .price-table thead { display: none; }
   .price-table, .price-table tbody, .price-table tr, .price-table td { display: block; width: 100%; }

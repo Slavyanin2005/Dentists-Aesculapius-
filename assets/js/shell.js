@@ -98,7 +98,6 @@ if (footerTarget) {
           <span><a href="${shellUrl('privacy/')}">Политика обработки персональных данных</a></span>
         </div>
       </div>
-    </footer>
-    <a class="mobile-call" data-phone href="tel:+79131631078" aria-label="Записаться на приём по телефону"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"></path></svg><span>Записаться на приём</span></a>`;
+    </footer>`;
 }
 
