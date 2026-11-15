@@ -82,6 +82,7 @@ if (footerTarget) {
               <li><a href="${shellUrl('services/')}">Услуги и цены</a></li>
               <li><a href="${shellUrl('doctors/')}">Врачи</a></li>
               <li><a href="${shellUrl('patients/')}">Пациентам</a></li>
+              <li><a href="${shellUrl('patients/#paid-services')}">Правила платных услуг</a></li>
               <li><a href="${shellUrl('documents/')}">Документы</a></li>
               <li><a href="${shellUrl('navigation/')}">Навигация</a></li>
             </ul>
