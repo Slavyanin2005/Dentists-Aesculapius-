@@ -10,7 +10,7 @@ if (headerTarget) {
       <div class="container topbar__inner">
         <div class="topbar__meta">
           <span>Норильск, район Талнах, ул. Рудная, 47</span>
-          <span>Пн–пт 09:00–20:00 · Сб 09:00–15:00</span>
+          <span class="topbar__schedule"><span>Пн–пт 09:00–20:00</span><span>Сб 09:00–15:00</span></span>
         </div>
         <a data-phone href="tel:+79131631078">+7 (913) 163-10-78</a>
       </div>

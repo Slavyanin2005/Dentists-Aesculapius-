@@ -277,7 +277,10 @@ documentDialog?.addEventListener('click', (event) => {
   if (event.target === documentDialog) documentDialog.close();
 });
 documentDialog?.addEventListener('close', () => {
-  if (documentDialogImage) documentDialogImage.src = '';
+  if (documentDialogImage) {
+    documentDialogImage.removeAttribute('src');
+    documentDialogImage.alt = '';
+  }
   documentItems = [];
   currentDocumentIndex = -1;
 });
