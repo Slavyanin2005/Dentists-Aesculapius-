@@ -1,7 +1,7 @@
-const headerTarget = document.querySelector('[data-site-header]');
-const footerTarget = document.querySelector('[data-site-footer]');
-const shellSiteRoot = new URL('../../', document.currentScript.src);
-const shellUrl = (path = '') => new URL(path, shellSiteRoot).href;
+const headerTarget = document.querySelector("[data-site-header]");
+const footerTarget = document.querySelector("[data-site-footer]");
+const shellSiteRoot = new URL("../../", document.currentScript.src);
+const shellUrl = (path = "") => new URL(path, shellSiteRoot).href;
 
 if (headerTarget) {
   headerTarget.innerHTML = `
@@ -18,16 +18,16 @@ if (headerTarget) {
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="${shellUrl()}" aria-label="Эскулап – на главную">
-          <img src="${shellUrl('media/eskulap-logo-horizontal.svg')}" width="780" height="197" alt="Эскулап, стоматология">
+          <img src="${shellUrl("media/eskulap-logo-horizontal.svg")}" width="780" height="197" alt="Эскулап, стоматология">
         </a>
         <nav class="main-nav" data-menu aria-label="Основная навигация">
           <ul>
             <li><a data-nav-link href="${shellUrl()}">Главная</a></li>
-            <li><a data-nav-link href="${shellUrl('services/')}">Услуги и цены</a></li>
-            <li><a data-nav-link href="${shellUrl('doctors/')}">Врачи</a></li>
-            <li><a data-nav-link href="${shellUrl('patients/')}">Пациентам</a></li>
-            <li><a data-nav-link href="${shellUrl('documents/')}">Документы</a></li>
-            <li><a data-nav-link href="${shellUrl('contacts/')}">Контакты</a></li>
+            <li><a data-nav-link href="${shellUrl("services/")}">Услуги и цены</a></li>
+            <li><a data-nav-link href="${shellUrl("doctors/")}">Врачи</a></li>
+            <li><a data-nav-link href="${shellUrl("patients/")}">Пациентам</a></li>
+            <li><a data-nav-link href="${shellUrl("documents/")}">Документы</a></li>
+            <li><a data-nav-link href="${shellUrl("contacts/")}">Контакты</a></li>
           </ul>
         </nav>
         <div class="header-actions">
@@ -73,18 +73,18 @@ if (footerTarget) {
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <img src="${shellUrl('media/eskulap-logo-horizontal.svg')}" width="780" height="197" alt="Эскулап, стоматология">
+            <img src="${shellUrl("media/eskulap-logo-horizontal.svg")}" width="780" height="197" alt="Эскулап, стоматология">
             <p>ООО «ЭСКУЛАП». Стоматологическая помощь пациентам. Приём ведётся по предварительной записи.</p>
           </div>
           <div>
             <h3>Разделы</h3>
             <ul class="footer-links">
-              <li><a href="${shellUrl('services/')}">Услуги и цены</a></li>
-              <li><a href="${shellUrl('doctors/')}">Врачи</a></li>
-              <li><a href="${shellUrl('patients/')}">Пациентам</a></li>
-              <li><a href="${shellUrl('patients/#paid-services')}">Правила платных услуг</a></li>
-              <li><a href="${shellUrl('documents/')}">Документы</a></li>
-              <li><a href="${shellUrl('navigation/')}">Навигация</a></li>
+              <li><a href="${shellUrl("services/")}">Услуги и цены</a></li>
+              <li><a href="${shellUrl("doctors/")}">Врачи</a></li>
+              <li><a href="${shellUrl("patients/")}">Пациентам</a></li>
+              <li><a href="${shellUrl("patients/#paid-services")}">Правила платных услуг</a></li>
+              <li><a href="${shellUrl("documents/")}">Документы</a></li>
+              <li><a href="${shellUrl("navigation/")}">Навигация</a></li>
             </ul>
           </div>
           <div>
@@ -96,9 +96,8 @@ if (footerTarget) {
         <div class="legal-warning">Имеются противопоказания. Необходима консультация специалиста.</div>
         <div class="footer-bottom">
           <span>© <span data-year></span> ООО «ЭСКУЛАП»</span>
-          <span><a href="${shellUrl('privacy/')}">Политика обработки персональных данных</a></span>
+          <span><a href="${shellUrl("privacy/")}">Политика обработки персональных данных</a></span>
         </div>
       </div>
     </footer>`;
 }
-
