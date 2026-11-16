@@ -213,19 +213,21 @@ document.querySelectorAll("[data-phone]").forEach((item) => {
 
 const menuButton = document.querySelector("[data-menu-button]");
 const menu = document.querySelector("[data-menu]");
+const setMenuOpen = (isOpen) => {
+  if (!menuButton || !menu) return;
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+  menuButton.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
+  menu.classList.toggle("is-open", isOpen);
+};
+const closeMenu = () => setMenuOpen(false);
+
 if (menuButton && menu) {
   menuButton.addEventListener("click", () => {
     const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-    menuButton.setAttribute("aria-expanded", String(!isOpen));
-    menu.classList.toggle("is-open", !isOpen);
-    document.body.classList.toggle("menu-open", !isOpen);
+    setMenuOpen(!isOpen);
   });
   menu.querySelectorAll("a").forEach((link) =>
-    link.addEventListener("click", () => {
-      menuButton.setAttribute("aria-expanded", "false");
-      menu.classList.remove("is-open");
-      document.body.classList.remove("menu-open");
-    }),
+    link.addEventListener("click", closeMenu),
   );
 }
 
@@ -241,6 +243,12 @@ const accessibilityPanel = document.querySelector("[data-accessibility-panel]");
 const accessibilityButton = document.querySelector(
   "[data-accessibility-button]",
 );
+const setAccessibilityPanelOpen = (isOpen) => {
+  if (!accessibilityButton || !accessibilityPanel) return;
+  accessibilityPanel.hidden = !isOpen;
+  accessibilityButton.setAttribute("aria-expanded", String(isOpen));
+};
+const closeAccessibilityPanel = () => setAccessibilityPanelOpen(false);
 const savedFont = localStorage.getItem("eskulap-font") || "normal";
 const savedContrast = localStorage.getItem("eskulap-contrast") || "normal";
 document.documentElement.dataset.font = savedFont;
@@ -248,25 +256,80 @@ document.documentElement.dataset.contrast = savedContrast;
 
 if (accessibilityButton && accessibilityPanel) {
   accessibilityButton.addEventListener("click", () => {
-    const hidden = accessibilityPanel.hidden;
-    accessibilityPanel.hidden = !hidden;
-    accessibilityButton.setAttribute("aria-expanded", String(hidden));
+    const isOpen = !accessibilityPanel.hidden;
+    setAccessibilityPanelOpen(!isOpen);
+    if (!isOpen) closeMenu();
   });
 }
 
-document.querySelectorAll("[data-font]").forEach((button) =>
+const fontButtons = [...document.querySelectorAll("[data-font]")];
+const contrastButtons = [...document.querySelectorAll("[data-contrast]")];
+const updateAccessibilityButtonStates = () => {
+  fontButtons.forEach((button) =>
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.font === document.documentElement.dataset.font),
+    ),
+  );
+  contrastButtons.forEach((button) =>
+    button.setAttribute(
+      "aria-pressed",
+      String(
+        button.dataset.contrast === document.documentElement.dataset.contrast,
+      ),
+    ),
+  );
+};
+
+updateAccessibilityButtonStates();
+
+fontButtons.forEach((button) =>
   button.addEventListener("click", () => {
     document.documentElement.dataset.font = button.dataset.font;
     localStorage.setItem("eskulap-font", button.dataset.font);
+    updateAccessibilityButtonStates();
   }),
 );
 
-document.querySelectorAll("[data-contrast]").forEach((button) =>
+contrastButtons.forEach((button) =>
   button.addEventListener("click", () => {
     document.documentElement.dataset.contrast = button.dataset.contrast;
     localStorage.setItem("eskulap-contrast", button.dataset.contrast);
+    updateAccessibilityButtonStates();
   }),
 );
+
+window.addEventListener(
+  "scroll",
+  () => {
+    closeMenu();
+    closeAccessibilityPanel();
+  },
+  { passive: true },
+);
+
+document.addEventListener("click", (event) => {
+  if (
+    menuButton &&
+    menu &&
+    !menuButton.contains(event.target) &&
+    !menu.contains(event.target)
+  )
+    closeMenu();
+  if (
+    accessibilityButton &&
+    accessibilityPanel &&
+    !accessibilityButton.contains(event.target) &&
+    !accessibilityPanel.contains(event.target)
+  )
+    closeAccessibilityPanel();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  closeMenu();
+  closeAccessibilityPanel();
+});
 
 const searchDialog = document.querySelector("[data-search-dialog]");
 const searchInput = document.querySelector("[data-search-input]");

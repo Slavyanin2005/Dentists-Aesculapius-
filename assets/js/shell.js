@@ -32,19 +32,27 @@ if (headerTarget) {
         </nav>
         <div class="header-actions">
           <button class="icon-button" type="button" data-search-open aria-label="Поиск по сайту" title="Поиск"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg></button>
-          <button class="icon-button" type="button" data-accessibility-button aria-expanded="false" aria-controls="accessibility-panel" aria-label="Версия для слабовидящих" title="Версия для слабовидящих">А</button>
+          <button class="icon-button" type="button" data-accessibility-button aria-expanded="false" aria-controls="accessibility-panel" aria-label="Версия для слабовидящих" title="Версия для слабовидящих"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
           <button class="icon-button menu-button" type="button" data-menu-button aria-expanded="false" aria-label="Открыть меню"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
         </div>
       </div>
-      <div class="accessibility-panel" id="accessibility-panel" data-accessibility-panel hidden>
-        <div class="container accessibility-panel__inner">
-          <strong>Размер текста:</strong>
-          <button type="button" data-font="normal">Обычный</button>
-          <button type="button" data-font="large">Крупный</button>
-          <button type="button" data-font="xlarge">Очень крупный</button>
-          <strong>Контраст:</strong>
-          <button type="button" data-contrast="normal">Обычный</button>
-          <button type="button" data-contrast="high">Высокий</button>
+      <div class="accessibility-panel" id="accessibility-panel" data-accessibility-panel role="dialog" aria-modal="false" aria-label="Настройки доступности" hidden>
+        <div class="accessibility-panel__inner">
+          <div class="accessibility-panel__group">
+            <strong>Размер текста</strong>
+            <div class="accessibility-panel__controls">
+              <button type="button" data-font="normal">Обычный</button>
+              <button type="button" data-font="large">Крупный</button>
+              <button type="button" data-font="xlarge">Очень крупный</button>
+            </div>
+          </div>
+          <div class="accessibility-panel__group">
+            <strong>Контраст</strong>
+            <div class="accessibility-panel__controls">
+              <button type="button" data-contrast="normal">Обычный</button>
+              <button type="button" data-contrast="high">Высокий</button>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -54,7 +62,7 @@ if (headerTarget) {
         <button class="icon-button" type="button" data-search-close aria-label="Закрыть поиск"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>
       </div>
       <div class="search-dialog__body">
-        <label class="eyebrow" for="site-search">Что вы хотите найти?</label>
+        <label class="eyebrow search-dialog__label" for="site-search">Что вы хотите найти?</label>
         <input class="search-input" id="site-search" type="search" data-search-input placeholder="Например, лицензия или удаление зуба">
         <ul class="search-results" data-search-results></ul>
       </div>
