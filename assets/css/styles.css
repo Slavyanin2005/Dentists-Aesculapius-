@@ -610,15 +610,15 @@ p {
   text-decoration: none;
 }
 .link-icon-tail {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35em;
+  display: inline;
   white-space: nowrap;
 }
 .link-icon {
+  display: inline-block;
   width: 1em;
   height: 1em;
-  flex: 0 0 auto;
+  margin-inline-start: 0.35em;
+  vertical-align: -0.125em;
 }
 .doctor-card__link:hover {
   color: var(--teal-dark);

@@ -384,6 +384,11 @@ document
 searchInput?.addEventListener("input", (event) =>
   renderSearchResults(event.target.value),
 );
+searchResults?.addEventListener("click", (event) => {
+  const resultLink = event.target.closest("a");
+  if (!resultLink || !searchResults.contains(resultLink)) return;
+  if (searchDialog?.open) searchDialog.close();
+});
 searchDialog?.addEventListener("click", (event) => {
   if (event.target === searchDialog) searchDialog.close();
 });
