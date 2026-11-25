@@ -53,14 +53,14 @@ const searchIndex = [
   {
     title: "Гречко Светлана Васильевна",
     url: mainUrl("doctors/#svetlana"),
-    description: "Врач-стоматолог: образование, квалификация и документы.",
+    description: "Врач-стоматолог: образование, квалификация и часы приёма.",
     keywords:
       "врач доктор стоматолог Гречко Светлана Васильевна Светлана Гречко С В терапевт ортопед детский стоматолог общая практика образование диплом интернатура Волгоградская медицинская академия аккредитация сертификат удостоверение квалификация повышение квалификации график прием приём документы",
   },
   {
     title: "Гречко Сергей Алексеевич",
     url: mainUrl("doctors/#sergey"),
-    description: "Зубной врач: образование, квалификация и документы.",
+    description: "Зубной врач: образование, квалификация и часы приёма.",
     keywords:
       "врач доктор зубной врач стоматолог Гречко Сергей Алексеевич Сергей Гречко С А руководитель главный врач образование диплом Ставропольский базовый медицинский колледж аккредитация сертификат удостоверение квалификация повышение квалификации стоматологическая помощь населению график прием приём документы",
   },
@@ -407,82 +407,6 @@ document.querySelectorAll("[data-filter]").forEach((button) =>
     });
   }),
 );
-
-const documentDialog = document.querySelector("[data-document-dialog]");
-const documentDialogImage = document.querySelector(
-  "[data-document-dialog-image]",
-);
-const documentDialogTitle = document.querySelector(
-  "[data-document-dialog-title]",
-);
-const documentPreviousButton = document.querySelector(
-  "[data-document-previous]",
-);
-const documentNextButton = document.querySelector("[data-document-next]");
-let documentItems = [];
-let currentDocumentIndex = -1;
-
-const showDocument = (index) => {
-  if (!documentDialogImage || !documentDialogTitle || !documentItems.length)
-    return;
-  currentDocumentIndex = index;
-  const button = documentItems[currentDocumentIndex];
-  const source = button.dataset.document;
-  const title = button.dataset.documentTitle || "Документ";
-  documentDialogImage.src = source;
-  documentDialogImage.alt = title;
-  documentDialogTitle.textContent = title;
-  if (documentPreviousButton)
-    documentPreviousButton.disabled = currentDocumentIndex === 0;
-  if (documentNextButton)
-    documentNextButton.disabled =
-      currentDocumentIndex === documentItems.length - 1;
-};
-
-document.querySelectorAll("[data-document]").forEach((button) =>
-  button.addEventListener("click", () => {
-    if (!documentDialog || !documentDialogImage || !documentDialogTitle) return;
-    documentItems = [
-      ...button
-        .closest(".document-gallery")
-        .querySelectorAll("[data-document]"),
-    ];
-    showDocument(documentItems.indexOf(button));
-    documentDialog.showModal();
-  }),
-);
-
-documentPreviousButton?.addEventListener("click", () => {
-  if (currentDocumentIndex > 0) showDocument(currentDocumentIndex - 1);
-});
-documentNextButton?.addEventListener("click", () => {
-  if (currentDocumentIndex < documentItems.length - 1)
-    showDocument(currentDocumentIndex + 1);
-});
-documentDialog?.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowLeft" && currentDocumentIndex > 0)
-    showDocument(currentDocumentIndex - 1);
-  if (
-    event.key === "ArrowRight" &&
-    currentDocumentIndex < documentItems.length - 1
-  )
-    showDocument(currentDocumentIndex + 1);
-});
-
-document
-  .querySelector("[data-document-dialog-close]")
-  ?.addEventListener("click", () => documentDialog?.close());
-documentDialog?.addEventListener("click", (event) => {
-  if (event.target === documentDialog) documentDialog.close();
-});
-documentDialog?.addEventListener("close", () => {
-  if (documentDialogImage) {
-    documentDialogImage.removeAttribute("src");
-    documentDialogImage.alt = "";
-  }
-  documentItems = [];
-  currentDocumentIndex = -1;
-});
 
 document.querySelectorAll("[data-year]").forEach((item) => {
   item.textContent = new Date().getFullYear();
